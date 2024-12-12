@@ -46,3 +46,62 @@ The Fakebook dataset used in this project is structured similarly to the dataset
 
 - **PublicTime.txt**: Records the average runtime of the instructor's implementation against the public dataset on the CAEN system. Use `make time-all` to collect your runtime. Runtime instability is expected due to JDBC connection mechanisms, and reasonable buffer times are allowed on the Autograder.
 
+# Facebook Queries
+
+## Query 1: First Names
+Identify information about Fakebook users' first names. You need to find:
+- The longest and shortest first names by length. In case of ties, report all tied names in alphabetical order.
+- The most common first names and how many users have that first name. In case of ties, report all tied names in alphabetical order.
+
+## Query 2: Lonely Users
+Identify all Fakebook users who have no Fakebook friends. For each user without any friends, report:
+- Their ID
+- First name
+- Last name
+The users should be reported in ascending order by ID.
+
+## Query 3: Users Who Live Away From Home
+Identify all Fakebook users who no longer live in their hometown. For each such user, report:
+- Their ID
+- First name
+- Last name
+The results should be sorted in ascending order by the users' ID.
+
+## Query 4: Highly-Tagged Photos
+Identify the most highly-tagged photos. You will be given a `num` argument to return the top `num` photos with the most tagged users, sorted in descending order by the number of tagged users. If there are ties, list the photo with the smaller ID first. For each photo, report:
+- The photo’s ID
+- The ID of the album containing the photo
+- The photo’s Fakebook link
+- The name of the album containing the photo
+Also, list the ID, first name, and last name of the users tagged in that photo, sorted by user ID.
+
+## Query 5: Matchmaker
+Suggest possible unrealized Fakebook friendships. Given two arguments, `num` and `yearDiff`, return the top `num` pairs of users who meet the following conditions:
+- They are the same gender.
+- They are tagged in at least one common photo.
+- They are not friends.
+- The difference in their birth years is less than or equal to `yearDiff`.
+For each pair, report:
+- The IDs, first names, and last names of the two users (list the smaller ID first).
+- The photos in which they were tagged together, with each photo’s ID, Fakebook link, album ID, and album name.
+
+## Query 6: Suggest Friends
+Suggest possible unrealized Fakebook friendships based on mutual friends. Given a `num` argument, return the top `num` pairs of users who have the most mutual friends but are not friends themselves. A mutual friend is one who is a friend of both users. For each pair, report:
+- The IDs, first names, and last names of the two users (list the smaller ID first).
+- The IDs, first names, and last names of all their mutual friends, sorted by ID.
+
+## Query 7: Event-Heavy States
+Identify the states in which the most Fakebook events are held. Return the states with the most events, listed in ascending order by state name, along with the number of events held in those states.
+
+## Query 8: Oldest and Youngest Friends
+Identify the oldest and youngest friend of a particular Fakebook user. Given a `userID`, report:
+- The ID, first name, and last name of the oldest and youngest friend of the user.
+If two friends have the same birth date, report the one with the larger user ID.
+
+## Query 9: Potential Siblings
+Identify pairs of Fakebook users that might be siblings. Two users might be siblings if:
+- They have the same last name.
+- They have the same hometown.
+- They are friends.
+- The difference in their birth years is strictly less than 10 years.
+Report each pair with the smaller user ID first and the larger user ID second.
