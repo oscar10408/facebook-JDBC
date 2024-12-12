@@ -41,3 +41,8 @@ The Fakebook dataset used in this project is structured similarly to the dataset
 *To run your queries and measure their runtime, you again have two options. If you want to time all your queries, run make time-all .
  To measure the runtime of a single query, run make timeN where N is the query number. Make sure that your code runs without any
  error before attempting to measure its runtime.
+
+- **PublicSolution.txt**: Contains the expected output for each query against the public dataset. Ensure your outputs match this file exactly when using `make query-all`. Trailing blank lines and headers must not be omitted.
+
+- **PublicTime.txt**: Records the average runtime of the instructor's implementation against the public dataset on the CAEN system. Use `make time-all` to collect your runtime. Runtime instability is expected due to JDBC connection mechanisms, and reasonable buffer times are allowed on the Autograder.
+
