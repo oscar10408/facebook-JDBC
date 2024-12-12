@@ -118,11 +118,11 @@ To execute a query using a `Statement`, you should use the following method:
 
 ```java
 Statement stmt = new Statement ( ... ) ;
- ResultSet rst = stmt.executeQuery ( ... ) ;
- while (rst.next ()) {
- ResultSet rst2 = stmt.executeQuery ( ... ) ;
- long val = rst.getLong (1);
- }
+ResultSet rst = stmt.executeQuery ( ... ) ;
+while (rst.next ()) {
+    ResultSet rst2 = stmt.executeQuery ( ... ) ;
+    long val = rst.getLong (1);
+}
 ```
 
 Reusing stmt for generating results in rst2 causes rst to close, leading to an exception when accessing its data. To handle multiple ResultSets, create a second Statement for the inner query and ensure it's declared outside the loop to avoid unnecessary reinitialization. Additionally, always close ResultSets before closing the Statement to ensure proper resource management. Refer to the implementation of Query 0 for resource closure examples.
