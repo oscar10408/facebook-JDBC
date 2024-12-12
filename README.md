@@ -126,3 +126,10 @@ while (rst.next ()) {
 ```
 
 Reusing stmt for generating results in rst2 causes rst to close, leading to an exception when accessing its data. To handle multiple ResultSets, create a second Statement for the inner query and ensure it's declared outside the loop to avoid unnecessary reinitialization. Additionally, always close ResultSets before closing the Statement to ensure proper resource management. Refer to the implementation of Query 0 for resource closure examples.
+
+## Example Usage
+
+### Compilation
+```bash
+make query-all
+```
