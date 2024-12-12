@@ -105,3 +105,24 @@ Identify pairs of Fakebook users that might be siblings. Two users might be sibl
 - They are friends.
 - The difference in their birth years is strictly less than 10 years.
 Report each pair with the smaller user ID first and the larger user ID second.
+
+# JDBC Statements and ResultSets
+
+This project makes use of JDBC tools, specifically `Statement` and `ResultSet`, to execute SQL queries and process their results. The necessary Java libraries have already been imported, allowing you to focus on implementing and using these tools to interact with your database.
+
+## Using Statements
+
+In JDBC, a `Statement` object is used to execute queries and updates against the database. Each query function provided in this project has already created a `Statement` object named `stmt` that you can use directly. If you need to create a new `Statement` object, you can copy the try-with-resources block and change the variable name as needed.
+
+To execute a query using a `Statement`, you should use the following method:
+
+```java
+Statement stmt = new Statement ( ... ) ;
+ ResultSet rst = stmt.executeQuery ( ... ) ;
+ while (rst.next ()) {
+ ResultSet rst2 = stmt.executeQuery ( ... ) ;
+ long val = rst.getLong (1);
+ }
+```
+
+Reusing stmt for generating results in rst2 causes rst to close, leading to an exception when accessing its data. To handle multiple ResultSets, create a second Statement for the inner query and ensure it's declared outside the loop to avoid unnecessary reinitialization. Additionally, always close ResultSets before closing the Statement to ensure proper resource management. Refer to the implementation of Query 0 for resource closure examples.
